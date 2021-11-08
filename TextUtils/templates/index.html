@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}TextUtils Home{% endblock title %}
+
+{% block body %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Welcome to TextUtils!</strong> You can do anything with your text here!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="container">
+
+    <form action='/analyze' method='get'>
+
+
+
+        <div class="form-group my-2">
+            <label for="exampleFormControlTextarea1">Enter your text here and let Text Utils do the magic</label>
+            <textarea class="form-control" name='text' id="exampleFormControlTextarea1" rows="9"></textarea>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="customSwitch1">
+            <label class="form-check-label" for="customSwitch1">Remove Punctuations</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="customSwitch2">
+            <label class="form-check-label" for="customSwitch2">UPPERCASE</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="customSwitch3">
+            <label class="form-check-label" for="customSwitch3">New Line Remover</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="customSwitch4">
+            <label class="form-check-label" for="customSwitch4">Extra Spaces Remover       </label>
+        </div>
+
+        <button type="submit" class="btn btn-dark mt-2">Analyze Text</button>
+    </form>
+</div>
+{% endblock body %}
