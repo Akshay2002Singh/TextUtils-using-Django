@@ -14,17 +14,22 @@ def analyze(request):
     full_caps = request.POST.get('fullcaps', 'off')
     new_line_remover = request.POST.get('newlineremover', 'off')
     extra_space_remover = request.POST.get('extraspaceremover', 'off')
-    temp_analyzed_text = ""
+    params = {'purpose': "", 'analyzed_text':""}
     #Check which checkbox is on
     if remove_punc == "on":
         text=rm_punc(text)
+        params['purpose']+='Removed Punctuations \n'
     if full_caps == "on":
         text=capital_all(text)
+        params['purpose']+='Changed to Uppercase \n'
     if new_line_remover == "on":
         text=rm_new_line(text)
+        params['purpose']+='Removed NewLines \n'
     if extra_space_remover == "on":
         text=rm_extra_space(text)
-    return HttpResponse(text)
+        params['purpose']+='Removed Extra Spaces \n'
+    params['analyzed_text']=text
+    return HttpResponse(params['analyzed_text'])
 
 def rm_punc(text):
     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
@@ -45,6 +50,7 @@ def rm_new_line(text):
             analyzed = analyzed + char
     return analyzed
 def rm_extra_space(text):
+    analyzed = ""
     for index, char in enumerate(text):
         if not(text[index] == " " and text[index+1]==" "):
             analyzed = analyzed + char
