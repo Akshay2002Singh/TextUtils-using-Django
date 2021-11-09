@@ -1,12 +1,22 @@
-from django.http.response import HttpResponse
 from django.shortcuts import render
+from home.models import contact
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
 
-def contact(request):
+def contact_us(request):
     return render(request,'contact.html')
+
+def submit_contact_form(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+        temp_contact = contact(name=name,email=email,phone=phone,message=message)
+        temp_contact.save()
+        return render(request,'contact.html')
 
 def analyze(request):
     # get text

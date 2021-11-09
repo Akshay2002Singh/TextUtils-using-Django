@@ -5,6 +5,7 @@ from home import views
 
 urlpatterns = [
     path('',views.index,name='home'),
-    path('contact',views.contact,name='contact'),
+    path('contact_us',views.contact_us,name='contact_us'),
     path('analyze',views.analyze,name='analyze'),
+    path('submit_contact_form',views.submit_contact_form,name='submit_contact_form'),
 ]
