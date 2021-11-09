@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Analyzed Text{% endblock title %}
+
+{% block body %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Welcome to TextUtils!</strong> Task is completed.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="container">
+    <h1 class="fw-bolder ">Your Analyzed Text : <div class="text-center fst-italic fw-bold"><pre>{{ purpose }}</pre></div></h1>
+    <div class="container-fluid bg-dark fs-4 text-light">
+        <br>
+        <p><pre>{{ analyzed_text }}</pre></p>
+        <br>
+    </div>
+</div>
+{% endblock body %}
