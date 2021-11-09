@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from home.models import contact
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -16,6 +17,7 @@ def submit_contact_form(request):
         message = request.POST.get('message')
         temp_contact = contact(name=name,email=email,phone=phone,message=message)
         temp_contact.save()
+        messages.success(request,"Your form has been submitted succesfully")
         return render(request,'contact.html')
 
 def analyze(request):

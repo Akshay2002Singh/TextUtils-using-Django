@@ -3,10 +3,22 @@
 {% block title %}Contact Us{% endblock title %}
 
 {% block body %}
+{% if not messages %}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Welcome to TextUtils!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+{% endif %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
 <div class="container">
     <h1 class="fw-bolder text-center">Contact Us</h1>
     <form method="post" action="/submit_contact_form">
